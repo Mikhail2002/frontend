@@ -1,0 +1,31 @@
+<header>
+    <nav class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+            <div class="nav-title">
+                Магазин
+            </div>
+        </div>
+       
+        
+
+        <div class="nav-links">
+            <a class="nav-link" routerLink="/">Home</a>
+            <a class="nav-link" routerLink="/shop">Shop</a>
+                <a class="nav-link dropdown-toggle" routerLink="/admin/users" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" *ngIf="userAuthService.isAdmin()">
+                    Admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a routerLink="/admin/users" class="dropdown-item">Users</a>
+                    <a routerLink="/admin/books" class="dropdown-item">Books</a>
+                    
+                </div>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-button" *ngIf="!isLoggedIn()" type="button" routerLink="/login">Login</button>
+            <button class="nav-button" *ngIf="!isLoggedIn()" type="button" routerLink="/register">Register</button>
+            <button class="nav-button" *ngIf="isLoggedIn()" type="button" (click)="logout()">Logout</button>
+        </div>
+    </nav>
+</header>

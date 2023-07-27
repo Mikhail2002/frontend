@@ -1,0 +1,32 @@
+
+<div class="container mt-5">
+    <div class="card" style="padding: 20px;">
+        <div class="header">
+            <h2>Log In</h2>
+        </div>
+            <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+                <input type="email"
+                formControlName="email"
+                id="email"
+                placeholder="Enter your email"
+                class="form-control mb-3"/>
+                
+
+                <input type="password"
+                formControlName="password"
+                id="password"
+                placeholder="Enter your password"
+                class="form-control mb-3">
+                
+                <input type="checkbox" onclick="showPass()"> Show password
+                <p *ngIf="this.wrongPass === true"><small class="text-danger">Wrong email or password</small></p>
+
+                
+                
+                <button  [disabled]="loginForm.invalid" type="submit" class="btn btn-outline-primary form-control">Login</button>
+            </form>
+
+
+    </div>
+</div>
+

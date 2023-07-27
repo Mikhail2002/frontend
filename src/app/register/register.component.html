@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <div class="card" style="padding: 20px;">
+        <div class="header">
+            <h2>Registration</h2>
+            <p>Please complete all fields.</p>
+        </div>
+            <form [formGroup]="registerForm" (ngSubmit)="register(registerForm)">
+                <input type="text"
+                formControlName = "email"
+                id="email"
+                placeholder="Enter your email"
+                class="form-control mb-3">
+                <p *ngIf="this.registerForm.get('email')?.invalid && this.registerForm.get('email')?.touched"><small class="text-danger">Email is required</small></p>
+                <p *ngIf="isEmailTaken == true"><small class="text-danger">Email "{{email}}" is already in use on another account</small></p>
+                
+                <input type="text"
+                formControlName = "name"
+                id="name"
+                placeholder="Enter your name"
+                class="form-control mb-3">
+                <p *ngIf="this.registerForm.get('name')?.invalid && this.registerForm.get('name')?.touched"><small class="text-danger">Name is required</small></p>
+
+                <input type="password"
+                formControlName = "password"
+                id="password"
+                placeholder="Enter your password"
+                class="form-control mb-3">
+                <p *ngIf="this.registerForm.get('password')?.invalid && this.registerForm.get('password')?.touched"><small class="text-danger">Password is required (min. length = 8)</small></p>
+                <input type="checkbox" onclick="showPass()"> Show password
+
+                <button [disabled]="registerForm.invalid" type="submit"
+                class="btn btn-outline-primary form-control">Register</button>
+            </form>
+    </div>
+</div>
+
